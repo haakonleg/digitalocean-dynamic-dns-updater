@@ -6,14 +6,14 @@ You can use this as a standalone script (dyndns.py), or deploy the docker image 
 
 ## Usage
 
-- Ensure that your domain already has the records (if they don't exist, this script won't work)
+- Ensure that your domain/s already has the records (if they don't exist, this script won't work)
 - You must generate a DigitalOcean API key (can be found in the dashboard under Account -> API -> Token/Keys)
 
 ### Example
 
-`python dyndns.py --domain your-domain.com --apikey YOUR_API_KEY subdomain1 subdomain2 subdomain3 ...`
+`python dyndns.py --config dyndns.conf`
 
-You must specify your domain name and API key. The last argument is a list of subdomains (names of A records) that you want to update.
+You must specify a path to the config file. There is an example provided in `dyndns.conf.example`.
 
 ## Docker image
 
@@ -30,9 +30,8 @@ digitalocean-dyndns:
   environment:
     - PUID=41025
     - CHECK_INTERVAL=3600
-    - DOMAIN=your-domain.com
-    - SUBDOMAINS=subdomain1 subdomain2 subdomain3
-    - API_KEY=YOUR_API_KEY
+  volumes:
+    - /path/to/config/dyndns.conf:/dyndns.conf:ro
   restart: unless-stopped
 ```
 

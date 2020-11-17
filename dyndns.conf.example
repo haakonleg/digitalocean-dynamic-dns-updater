@@ -1,0 +1,5 @@
+api_key=YOUR_API_KEY
+ipcheck_endpoint=https://ifconfig.me
+
+domain=example.net  @, admin, mail
+domain=google.com   gmail, drive

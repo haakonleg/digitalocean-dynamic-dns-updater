@@ -1,5 +1,6 @@
 FROM alpine:latest
 
+ENV CONFIG_FILE=/dyndns.conf
 ENV CHECK_INTERVAL=1800
 ENV PUID=41025
 
