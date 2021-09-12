@@ -1,6 +1,6 @@
 # digitalocean-dynamic-dns-updater
 
-Python script and docker image to automate updating DNS A records on DigitalOcean. Useful if you have a dynamic IP and self-hosted server, and wish to keep subdomain records updated to match your current public IP address.
+Python script and docker image to automate updating DNS A or AAAA records on DigitalOcean. Useful if you have a dynamic IP and self-hosted server, and wish to keep subdomain records updated to match your current public IP address.
 
 You can use this as a standalone script (dyndns.py), or deploy the docker image which can be configured to check the records at a regular interval.
 
@@ -8,6 +8,7 @@ You can use this as a standalone script (dyndns.py), or deploy the docker image 
 
 - Ensure that your domain/s already has the records (if they don't exist, this script won't work)
 - You must generate a DigitalOcean API key (can be found in the dashboard under Account -> API -> Token/Keys)
+- To have the script update IPv6 AAAA records the following option must be be set in dyndns conf: `ipv6=true`
 
 ### Example
 
@@ -37,5 +38,4 @@ digitalocean-dyndns:
 
 ## Todo
 
-- This does not support AAAA records yet (IPV6), since I have no use for it personally. I might add it in the future, though.
 - Does not have proper error handling or retrying. If an error occurs (for example, a status code other than 2xx), the script simply prints error and exits.
